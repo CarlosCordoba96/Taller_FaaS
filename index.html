@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guestbook - a serverless web application</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-1">
+        Votación
+      </h1>
+      <p class="subtitle">
+       La mejor ciudad para los estudiantes
+      </p>
+
+      <div class="columns">
+        <div class="column">
+          <h3 class="title is-3">
+            Votos totales
+          </h3>
+          <div id="entries"></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-3">
+            Haz tu votación
+          </h3>
+          <p class="subtitle">
+            Recuerda: Una única votación por correo electrónico
+           </p>
+          <form id="addEntry">
+            <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Tu nombre" id="name">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="your email" id="email">
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <div class="select is-rounded is-primary">
+                  <select id = "vote">
+                      <option value="" disabled selected hidden>Selecciona tu ciudad</option>
+                      <option value="Ciudad Real">Ciudad Real</option>
+                      <option value="Granada">Granada</option>
+                      <option value="Teruel">Teruel</option>
+                      <option value="Segovia">Segovia</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="control">
+              <button class="button is-primary">Envia tu voto</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script id="entries-template" type="text/x-handlebars-template">
+    {{#each entries}}
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              La opción <strong>{{opcion}}</strong>
+              <br> tiene <strong>{{valor}}</strong> número de votos
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+    {{/each}}
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="guestbook.js"></script>
+</body>
+
+</html>
